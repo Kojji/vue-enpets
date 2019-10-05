@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store/store'
 import Home from './views/Home.vue'
 
 Vue.use(Router)
@@ -9,33 +10,46 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/us',
       name: 'home',
+      beforeEnter(to,from,next) {
+        store.dispatch('disableShopTool')
+        next()
+      },
       component: Home
     },
     {
       path: '/login',
       name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      beforeEnter(to,from,next) {
+        store.dispatch('disableShopTool')
+        next()
+      },
       component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
     },
     {
-      path: '/loja',
+      path: '/shop',
       name: 'loja',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Loja.vue')
+      beforeEnter(to,from,next) {
+        store.dispatch('enableShopTool')
+        next()
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/Loja.vue'),
     },
     {
-      path: '/participe',
+      path: '/participate',
       name: 'participe',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      beforeEnter(to,from,next) {
+        store.dispatch('disableShopTool')
+        next()
+      },
       component: () => import(/* webpackChunkName: "about" */ './views/Participe.vue')
+    },
+    {
+      path: '/',
+      redirect: '/shop'
     }
   ]
 })
+
+
