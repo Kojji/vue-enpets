@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store/store'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
 
@@ -11,12 +10,12 @@ export default new Router({
   routes: [
     {
       path: '/us',
-      name: 'home',
+      name: 'SobreNos',
       beforeEnter(to,from,next) {
         store.dispatch('disableShopTool')
         next()
       },
-      component: Home
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
       path: '/login',
@@ -30,6 +29,20 @@ export default new Router({
     {
       path: '/shop',
       name: 'loja',
+      children: [
+        {
+          path: 'category1',
+          component: () => import(/* webpackChunkName: "about" */ './components/AnimalProducts.vue')
+        },
+        {
+          path: 'category2',
+          component: () => import(/* webpackChunkName: "about" */ './components/PeopleProducts.vue')
+        },
+        {
+          path: 'cart',
+          component: () => import(/* webpackChunkName: "about" */ './components/Cart.vue')
+        }
+      ],
       beforeEnter(to,from,next) {
         store.dispatch('enableShopTool')
         next()
@@ -47,7 +60,11 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/shop'
+      redirect: '/shop/category1'
+    },
+    {
+      path: '/shop',
+      redirect: '/shop/category1'
     }
   ]
 })

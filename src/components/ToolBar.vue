@@ -5,7 +5,7 @@
     dark
     color="pink darken-1"
     >
-      <v-toolbar-title class="headline text-uppercase" @click="redirectLoja" id="nomeApp">
+      <v-toolbar-title class="headline text-uppercase" @click="redirectLoja" id="Enpets">
         <span>EN</span>
         <span class="font-weight-light">PETS</span>
       </v-toolbar-title>
@@ -13,15 +13,15 @@
       <v-toolbar-items>
         <!-- colocar dados usuário -->
         <v-btn text :to="redirectHome">Sobre Nós</v-btn>
-        <v-btn text :to="participeRoute">Participe</v-btn>
-        <v-btn text :to="lojaRoute">Loja</v-btn>
-        <v-btn text :to="loginRoute">Entrar</v-btn> <!-- trocar por sair -->
+        <v-btn text :to="redirectParticipe">Participe</v-btn>
+        <v-btn text :to="redirectShop1">Loja</v-btn>
+        <v-btn text :to="redirectLogin">Entrar</v-btn> <!-- trocar por sair -->
       </v-toolbar-items>
       <template v-if="inShopRoute" #extension>
         <v-toolbar-items>
-          <v-btn text><v-icon>{{ toolBarIcons.dogIcon }}</v-icon></v-btn>
-          <v-btn text><v-icon>{{ toolBarIcons.ownerIcon }}</v-icon></v-btn>
-          <v-btn text><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
+          <v-btn text :to="redirectShop1"><v-icon>{{ toolBarIcons.dogIcon }}</v-icon></v-btn>
+          <v-btn text :to="redirectShop2"><v-icon>{{ toolBarIcons.ownerIcon }}</v-icon></v-btn>
+          <v-btn text :to="redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
         </v-toolbar-items>
       </template>
       
@@ -38,10 +38,12 @@ export default {
   name: "ToolBar",
   data() {
     return {
-      loginRoute: "/login",
-      lojaRoute: "/shop",
-      participeRoute: "/participate",
+      redirectLogin: "/login",
+      redirectParticipe: "/participate",
       redirectHome: "/us",
+      redirectShop1: "/shop/category1",
+      redirectShop2: "/shop/category2",
+      redirectCart: "/shop/cart"
       };
   },
   mounted() {
