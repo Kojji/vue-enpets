@@ -19,9 +19,9 @@
       </v-toolbar-items>
       <template v-if="inShopRoute" #extension>
         <v-toolbar-items>
-          <v-btn text>Link 1</v-btn>
-          <v-btn text>Link 2</v-btn>
-          <v-btn text>Link 3</v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.dogIcon }}</v-icon></v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.ownerIcon }}</v-icon></v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
         </v-toolbar-items>
       </template>
       
@@ -48,7 +48,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      "inShopRoute"
+      "inShopRoute",
+      "toolBarIcons"
     ])
     
   },

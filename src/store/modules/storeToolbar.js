@@ -1,5 +1,10 @@
 const state = {
   inShopRoute: false,
+  toolBarIcons: {
+    cartIcon: "mdi-cart",
+    dogIcon: "mdi-dog",
+    ownerIcon: "mdi-dog-service"
+  },
   
 }
 
@@ -18,7 +23,10 @@ const actions = {
 
 const getters = {
   inShopRoute() {
-    return state.inShopRoute;
+    return state.inShopRoute
+  },
+  toolBarIcons() {
+    return state.toolBarIcons
   }
 }
 
