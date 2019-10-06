@@ -12,7 +12,7 @@ export default new Router({
       path: '/us',
       name: 'SobreNos',
       beforeEnter(to,from,next) {
-        store.dispatch('disableShopTool')
+        store.dispatch('disableExtended')
         next()
       },
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
@@ -21,10 +21,19 @@ export default new Router({
       path: '/login',
       name: 'login',
       beforeEnter(to,from,next) {
-        store.dispatch('disableShopTool')
+        store.dispatch('disableExtended')
         next()
       },
       component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
+    },
+    {
+      path: '/user',
+      name: 'user',
+      beforeEnter(to,from,next) {
+        store.dispatch('enableExtended','user')
+        next()
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/User.vue')
     },
     {
       path: '/shop',
@@ -44,7 +53,7 @@ export default new Router({
         }
       ],
       beforeEnter(to,from,next) {
-        store.dispatch('enableShopTool')
+        store.dispatch('enableExtended','shop')
         next()
       },
       component: () => import(/* webpackChunkName: "about" */ './views/Loja.vue'),
@@ -53,7 +62,7 @@ export default new Router({
       path: '/participate',
       name: 'participe',
       beforeEnter(to,from,next) {
-        store.dispatch('disableShopTool')
+        store.dispatch('disableExtended')
         next()
       },
       component: () => import(/* webpackChunkName: "about" */ './views/Participe.vue')

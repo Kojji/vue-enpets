@@ -1,33 +1,73 @@
 const state = {
   inShopRoute: false,
+  inUserRoute: false,
+  isExtended: false,
   toolBarIcons: {
     cartIcon: "mdi-cart",
     dogIcon: "mdi-dog",
     ownerIcon: "mdi-dog-service"
   },
-  
+  redirects: {
+    redirectLogin: "/login",
+    redirectParticipe: "/participate",
+    redirectHome: "/us",
+    redirectShop1: "/shop/category1",
+    redirectShop2: "/shop/category2",
+    redirectCart: "/shop/cart",
+    redirectUserPage: "/user"
+  },
+  logged: false,
 }
 
 const mutations = {
-
+  enableShopTool(state) {
+    state.inShopRoute = true
+    state.inUserRoute = false
+    state.isExtended = true
+  },
+  enableUserTool(state) {
+    state.inUserRoute = true
+    state.inShopRoute = false
+    state.isExtended = true
+  },
+  disableExtended(state) { 
+    state.inShopRoute = false
+    state.inUserRoute = false
+    state.isExtended = false
+  },
+  logUser(state) { state.logged = true },
+  logoffUser(state) { state.logged = false },
 }
 
 const actions = {
-  enableShopTool() {
-    state.inShopRoute = true
+  enableExtended({commit},type) { 
+    if(type === 'user') commit("enableUserTool")
+    else if(type === 'shop') commit("enableShopTool")
   },
-  disableShopTool() {
-    state.inShopRoute = false
+  disableExtended({commit}) { commit("disableExtended") },
+  userLogin({commit}) {
+    // eslint-disable-next-line
+    return new Promise ((res, rej) => {
+      commit("logUser")
+      res()
+    })
+  },
+  userLogoff({commit}) {
+    // eslint-disable-next-line
+    return new Promise ((res, rej) => {
+      commit("logoffUser")
+      res()
+    })
   }
 }
 
 const getters = {
-  inShopRoute() {
-    return state.inShopRoute
-  },
-  toolBarIcons() {
-    return state.toolBarIcons
-  }
+  inShopRoute(state) { return state.inShopRoute },
+  inUserRoute(state) { return state.inUserRoute},
+  isExtended(state) { return state.isExtended },
+  toolBarIcons(state) { return state.toolBarIcons },
+  redirects(state) { return state.redirects },
+  logged(state) { return state.logged },
 }
 
 export default {
