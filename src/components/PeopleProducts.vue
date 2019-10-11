@@ -6,8 +6,8 @@
     >
       <v-row>
         <v-col
-          v-for="card in cardsAboutPage"
-          :key="card.title"
+          v-for="card in cardsShopPageTwo"
+          :key="card.id"
           :cols="card.flex"
         >
           <v-card
@@ -23,19 +23,18 @@
 
 
             <v-card-text>
-              <span>{{card.title}}</span><br>
               <span class="text--primary">
-                <span>{{card.text}}</span><br>
+                <span>{{card.title}}</span><br>
+                <span>{{card.price}}</span><br>
               </span>
             </v-card-text>
 
-            <v-card-actions v-if="card.button">
+            <v-card-actions>
               <v-btn
                 text
-                :to="card.redirect"
                 color="orange"
               >
-                {{ card.button }}
+                comprar
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -53,7 +52,7 @@ export default {
   }),
   computed: {
     ...mapGetters([
-      "cardsAboutPage"
+      "cardsShopPageTwo"
     ])
     
   },

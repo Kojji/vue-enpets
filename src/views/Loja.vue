@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>This is a shop page</h1>
+  <div>
+    <router-view />
   </div>
 </template>

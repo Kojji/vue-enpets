@@ -4,13 +4,13 @@
       cols="12"
       class="flex-grow-0 flex-shrink-0"
     >
-      <v-btn text @click="logar">Logar</v-btn>
+      <v-btn text @click="deslogar">Sair</v-btn>
       <v-card
         class="pa-2"
         outlined
         tile
       >
-        Página de login
+        Página do Usuário
       </v-card>
     </v-col>
   </div>
@@ -18,13 +18,13 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "User",
   methods: {
-    logar() {
-      alert("Simula o login de usuário")
-      this.$store.dispatch('userLogin')
+    deslogar() {
+      alert("Simula o logoff de usuário")
+      this.$store.dispatch('userLogoff')
         .then(()=>{
-          this.$router.push('/user')
+          this.$router.push('/login')
         })
     }
   }

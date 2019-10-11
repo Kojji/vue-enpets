@@ -1,53 +1,67 @@
 <template>
   <v-layout wrap>
-    <v-toolbar app dense dark color="pink darken-1">
-      <v-toolbar-title class="headline text-uppercase" @click="redirectHome" id="nomeApp">
+    <v-toolbar
+    app
+    fixed
+    :extended = "isExtended"
+    dark
+    color="pink darken-1"
+    >
+      <v-toolbar-title class="headline text-uppercase" @click="redirectLoja" id="Enpets">
         <span>EN</span>
         <span class="font-weight-light">PETS</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <!-- colocar dados usuário -->
-        <v-btn text @click="redirectHome">Quem Somos</v-btn>
-        <v-btn text :to="participeRoute">Participe</v-btn>
-        <v-btn text :to="lojaRoute">Loja</v-btn>
-        <v-btn text :to="loginRoute">Entrar</v-btn> <!-- trocar por sair -->
+        <v-btn text :to="redirects.redirectHome">Sobre Nós</v-btn>
+        <v-btn text :to="redirects.redirectParticipe">Participe</v-btn>
+        <v-btn text :to="redirects.redirectShop1">Loja</v-btn>
+        <v-btn text :to="redirects.redirectLogin" v-show = "!logged">Entrar</v-btn>
+        <v-btn text :to="redirects.redirectUserPage" v-show = "logged">Usuário</v-btn>
       </v-toolbar-items>
+      <template v-if="isExtended" #extension>
+        <v-toolbar-items v-if="inShopRoute">
+          <v-btn text :to="redirects.redirectShop1"><v-icon>{{ toolBarIcons.dogIcon }}</v-icon></v-btn>
+          <v-btn text :to="redirects.redirectShop2"><v-icon>{{ toolBarIcons.ownerIcon }}</v-icon></v-btn>
+          <v-btn text :to="redirects.redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
+        </v-toolbar-items>
+        <v-toolbar-items v-if="inUserRoute">
+          <v-btn text><v-icon>info</v-icon></v-btn>
+          <v-btn text><v-icon>album</v-icon></v-btn>
+          <v-btn text><v-icon>pacotes</v-icon></v-btn> <!-- trocar pontos de compras -->
+          <v-btn text><v-icon>sair</v-icon></v-btn>
+        </v-toolbar-items>
+      </template>
     </v-toolbar>
   </v-layout>
 </template>
 
 <script>
-//import firebase from "firebase";
-//import noLoginPhoto from "../assets/noLoginPhoto.png";
+import {mapGetters} from "vuex"
 
 export default {
   name: "ToolBar",
   data() {
     return {
-      loginRoute: "/login",
-      lojaRoute: "/loja",
-      participeRoute: "/participe",
       };
   },
   mounted() {
   },
   computed: {
-    /* ...mapGetters([
-      'storeUserInfo'
-    ]) */
+    ...mapGetters([
+      "inShopRoute",
+      "inUserRoute",
+      "isExtended",
+      "toolBarIcons",
+      "logged",
+      "redirects"
+    ])
     
   },
   methods: {
-    redirectHome() {
-      this.$router.push('/');
+    redirectLoja() {
+      this.$router.push('/us')
     },
-    getPhoto() {
-
-    },
-    getUser() {
-      
-    }
   }
 };
 </script>
