@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 
 import toolbar from './modules/storeToolbar'
 import about from './modules/storeAbout'
+import participate from './modules/storeParticipate'
+import shop from './modules/storeShop'
 
 Vue.use(Vuex)
 
@@ -22,6 +24,8 @@ export default new Vuex.Store({
   },
   modules: {
     toolbar,
-    about
+    about,
+    participate,
+    shop
   }
 })

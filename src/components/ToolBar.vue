@@ -1,6 +1,8 @@
 <template>
   <v-layout wrap>
     <v-toolbar
+    app
+    fixed
     :extended = "isExtended"
     dark
     color="pink darken-1"
