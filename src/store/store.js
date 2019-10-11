@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 
 import toolbar from './modules/storeToolbar'
+import about from './modules/storeAbout'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
 
   },
   modules: {
-    toolbar
+    toolbar,
+    about
   }
 })
