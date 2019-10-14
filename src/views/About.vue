@@ -17,7 +17,7 @@
           >
             <v-img
               class="white--text"
-              height="200px"
+              :height="card.height"
               :src="card.src"
             ></v-img>
 

@@ -5,7 +5,13 @@ const state = {
   toolBarIcons: {
     cartIcon: "mdi-cart",
     dogIcon: "mdi-dog",
-    ownerIcon: "mdi-dog-service"
+    ownerIcon: "mdi-dog-service",
+    forumIcon: "mdi-chat",
+    albumIcon: "mdi-book-open-variant",
+    exchangeIcon: "mdi-coin-outline",
+    helpIcon: "mdi-help-circle",
+    exitIcon: "mdi-exit-to-app",
+
   },
   redirects: {
     redirectLogin: "/login",
@@ -58,7 +64,8 @@ const actions = {
       commit("logoffUser")
       res()
     })
-  }
+  },
+  
 }
 
 const getters = {
