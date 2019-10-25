@@ -1,3 +1,5 @@
+import Axios from "axios"
+
 import usPhoto from "../../assets/photos/aboutMain2.jpg"
 import adoptPhoto from "../../assets/photos/aboutAdote.jpg"
 import storePhoto from "../../assets/photos/aboutStore.jpg"
@@ -41,19 +43,33 @@ const state = {
       text: 'Venha nos ajudar e mais importante, ajudar os animais que precisam.'
     },
   ],
+  partnersArray: [],
   
 }
 
 const mutations = {
-  
+  setPartnersArray(state, userData) {
+    state.partnersArray = userData
+  }
 }
 
 const actions = {
-  
+  getPartnersInfo({commit}) {
+    return new Promise((res, rej) => {
+      Axios.get(`http://localhost:3000/partners`)
+        .then((data)=>{
+          commit("setPartnersArray", data.data)
+          res()
+        }).catch(()=>{
+          rej()
+        })
+    })
+  }
 }
 
 const getters = {
   cardsAboutPage(state) { return state.cardsAboutPage },
+  partnersArray(state) { return state.partnersArray }
 }
 
 export default {
