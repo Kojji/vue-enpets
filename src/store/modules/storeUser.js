@@ -3,11 +3,17 @@ import Axios from "axios"
 const state = {
   logged: false,
   userId: null,
+  userData: null,
 }
 const mutations = {
   logUser(state) { state.logged = true },
-  logoffUser(state) { state.logged = false },
-  userId(state, userData) { state.userId = userData}
+  logoffUser(state) { 
+    state.logged = false
+    state.userId = null
+    state.userData = null
+  },
+  userId(state, userData) { state.userId = userData},
+  setUserData(state, userData) {state.userData = userData}
 }
 const actions = {
   userLogin({commit}, loginData) {
@@ -34,6 +40,21 @@ const actions = {
     return new Promise ((res, rej) => {
       commit("logoffUser")
       res()
+    })
+  },
+  getUserInfo({commit, state}) {
+    return new Promise ((res, rej) => {
+      Axios.get(`http://localhost:3000/users?loginId=${state.userId}`)
+      .then((data) => {
+        commit("setUserData", data)
+        // eslint-disable-next-line
+        console.log(data)
+        res()
+      }).catch((err) =>{
+        // eslint-disable-next-line
+        console.log(err)
+        rej()
+      })
     })
   },
 }

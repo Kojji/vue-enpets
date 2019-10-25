@@ -79,7 +79,10 @@ export default {
         form.password = this.password;
         this.$store.dispatch('userLogin', form)
         .then(()=>{
-          this.$router.push('/user')
+          this.$store.dispatch('getUserInfo')
+          .then(()=>{
+            this.$router.push('/user')
+          })
         }).catch((error)=>{
           if(error === 'err1') { alert("Conta não encontrada") }
           else {alert("Problema ao tentar entrar no sistema, tente mais tarde") }

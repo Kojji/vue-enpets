@@ -16,6 +16,7 @@
         <v-btn text :to="redirects.redirectAdopt">Adote</v-btn> <!-- redirecionar para pagina de adoção -->
         <v-btn text :to="redirects.redirectParticipe">Participe</v-btn>
         <v-btn text :to="redirects.redirectShop1">Loja</v-btn>
+        <v-btn text :to="redirects.redirectEvents">Eventos</v-btn>
         <v-btn text :to="redirects.redirectLogin" v-show = "!logged">Entrar</v-btn>
         <v-btn text :to="redirects.redirectUserPage" v-show = "logged">Usuário</v-btn>
       </v-toolbar-items>

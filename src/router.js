@@ -77,6 +77,15 @@ export default new Router({
       component: () => import(/* webpackChunkName: "adote" */ './views/Adopt.vue')
     },
     {
+      path: '/events',
+      name: 'eventos',
+      beforeEnter(to,from,next) {
+        store.dispatch('disableExtended')
+        next()
+      },
+      component: () => import(/* webpackChunkName: "adote" */ './views/Events.vue')
+    },
+    {
       path: '/',
       redirect: '/shop/category1'
     },
