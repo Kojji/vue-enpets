@@ -15,7 +15,7 @@ export default new Router({
         store.dispatch('disableExtended')
         next()
       },
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "sobre" */ './views/About.vue')
     },
     {
       path: '/login',
@@ -24,7 +24,7 @@ export default new Router({
         store.dispatch('disableExtended')
         next()
       },
-      component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
+      component: () => import(/* webpackChunkName: "entrar" */ './views/Login.vue')
     },
     {
       path: '/user',
@@ -33,7 +33,7 @@ export default new Router({
         store.dispatch('enableExtended','user')
         next()
       },
-      component: () => import(/* webpackChunkName: "about" */ './views/User.vue')
+      component: () => import(/* webpackChunkName: "usuário" */ './views/User.vue')
     },
     {
       path: '/shop',
@@ -41,22 +41,22 @@ export default new Router({
       children: [
         {
           path: 'category1',
-          component: () => import(/* webpackChunkName: "about" */ './components/AnimalProducts.vue')
+          component: () => import(/* webpackChunkName: "animalProd" */ './components/AnimalProducts.vue')
         },
         {
           path: 'category2',
-          component: () => import(/* webpackChunkName: "about" */ './components/PeopleProducts.vue')
+          component: () => import(/* webpackChunkName: "pessoasProd" */ './components/PeopleProducts.vue')
         },
         {
           path: 'cart',
-          component: () => import(/* webpackChunkName: "about" */ './components/Cart.vue')
+          component: () => import(/* webpackChunkName: "carrinho" */ './components/Cart.vue')
         }
       ],
       beforeEnter(to,from,next) {
         store.dispatch('enableExtended','shop')
         next()
       },
-      component: () => import(/* webpackChunkName: "about" */ './views/Loja.vue'),
+      component: () => import(/* webpackChunkName: "loja" */ './views/Loja.vue'),
     },
     {
       path: '/participate',
@@ -65,7 +65,25 @@ export default new Router({
         store.dispatch('disableExtended')
         next()
       },
-      component: () => import(/* webpackChunkName: "about" */ './views/Participe.vue')
+      component: () => import(/* webpackChunkName: "participe" */ './views/Participe.vue')
+    },
+    {
+      path: '/adopt',
+      name: 'adote',
+      beforeEnter(to,from,next) {
+        store.dispatch('disableExtended')
+        next()
+      },
+      component: () => import(/* webpackChunkName: "adote" */ './views/Adopt.vue')
+    },
+    {
+      path: '/events',
+      name: 'eventos',
+      beforeEnter(to,from,next) {
+        store.dispatch('disableExtended')
+        next()
+      },
+      component: () => import(/* webpackChunkName: "adote" */ './views/Events.vue')
     },
     {
       path: '/',

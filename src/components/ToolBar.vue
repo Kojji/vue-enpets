@@ -1,7 +1,6 @@
 <template>
   <v-layout wrap>
-    <v-toolbar
-    app
+    <v-app-bar app
     fixed
     :extended = "isExtended"
     dark
@@ -14,8 +13,10 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text :to="redirects.redirectHome">Sobre Nós</v-btn>
+        <v-btn text :to="redirects.redirectAdopt">Adote</v-btn> <!-- redirecionar para pagina de adoção -->
         <v-btn text :to="redirects.redirectParticipe">Participe</v-btn>
         <v-btn text :to="redirects.redirectShop1">Loja</v-btn>
+        <v-btn text :to="redirects.redirectEvents">Eventos</v-btn>
         <v-btn text :to="redirects.redirectLogin" v-show = "!logged">Entrar</v-btn>
         <v-btn text :to="redirects.redirectUserPage" v-show = "logged">Usuário</v-btn>
       </v-toolbar-items>
@@ -26,13 +27,15 @@
           <v-btn text :to="redirects.redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
         </v-toolbar-items>
         <v-toolbar-items v-if="inUserRoute">
-          <v-btn text><v-icon>info</v-icon></v-btn>
-          <v-btn text><v-icon>album</v-icon></v-btn>
-          <v-btn text><v-icon>pacotes</v-icon></v-btn> <!-- trocar pontos de compras -->
-          <v-btn text><v-icon>sair</v-icon></v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.forumIcon }}</v-icon></v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.albumIcon }}</v-icon></v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.exchangeIcon }}</v-icon></v-btn> <!-- trocar pontos de compras -->
+          <v-btn text :to="redirects.redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
+          <v-btn text><v-icon>{{ toolBarIcons.helpIcon }}</v-icon></v-btn>
+          <v-btn text @click="deslogar"><v-icon>{{ toolBarIcons.exitIcon }}</v-icon></v-btn>
         </v-toolbar-items>
       </template>
-    </v-toolbar>
+    </v-app-bar>
   </v-layout>
 </template>
 
@@ -62,11 +65,18 @@ export default {
     redirectLoja() {
       this.$router.push('/us')
     },
+    deslogar() {
+      alert("Simula o logoff de usuário")
+      this.$store.dispatch('userLogoff')
+        .then(()=>{
+          this.$router.push('/login')
+        })
+    }
   }
 };
 </script>
 <style scoped>
-#nomeApp {
+#Enpets {
   cursor: pointer;
 }
 </style>

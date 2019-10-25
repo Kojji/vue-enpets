@@ -6,6 +6,7 @@ const state = {
       src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
       flex: 3,
       text: 'colocar aqui descrição do produto',
+      quantidade: '2',
       price: 'R$0.00',
       discount: false
     },
@@ -16,6 +17,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     {
@@ -25,6 +27,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     {
@@ -34,6 +37,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     { 
@@ -43,6 +47,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
   ],
@@ -54,6 +59,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     {
@@ -63,6 +69,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     {
@@ -72,6 +79,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     {
@@ -81,6 +89,7 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
     { 
@@ -90,6 +99,17 @@ const state = {
       flex: 3,
       text: 'colocar aqui descrição do produto',
       price: 'R$0.00',
+      quantidade: '2',
+      discount: false
+    },
+    { 
+      id:11,
+      title: 'produto(10)',
+      src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
+      flex: 3,
+      text: 'colocar aqui descrição do produto',
+      price: 'R$0.00',
+      quantidade: '2',
       discount: false
     },
   ],

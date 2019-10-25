@@ -1,35 +1,47 @@
+import usPhoto from "../../assets/photos/aboutMain2.jpg"
+import adoptPhoto from "../../assets/photos/aboutAdote.jpg"
+import storePhoto from "../../assets/photos/aboutStore.jpg"
+import participatePhoto from "../../assets/photos/aboutParticipe2.jpg"
+
 const state = {
   cardsAboutPage: [
     { 
-      title: 'O que o sistema é',
-      src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
+      title: 'Sobre o Enpets',
+      src: usPhoto,
       flex: 12,
-      text: 'colocar aqui o que é o enpets',
+      height: "250px",
+      text: 'Nós do Enpets, vemos nosso sistema como uma ferramenta para ajudar a conectar as pessoas que gostam e querem ajudar os animais com istituições que o fazem.' +
+      '<br>"Mas como isto é feito?" - nosso sistema conta com uma loja virtual, onde nossos parceiros realizam a venda de produtos, tanto para o cuidado diário de seu animal, ' + 
+      'como produtos sobre animais voltados para aqueles, que como nós, amamos os animais.' + 
+      '<br>Além disso, temos uma página exclusiva voltada para a adoção de animais para aqueles que estão a procura de novos companheiros.' + 
+      '<br>A sua ajuda não precisa vir de maneira monetária, fique atento sobre os eventos que nossas parceiras organizam e como ajudar.',
     },
     {
-      title: 'Loja produtos p/ animais',
-      src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
-      flex: 4 , button: "1",
-      redirect: "/shop/category1",
-      text: 'colocar aqui sobre a loja'
-    },
-    {
-      title: 'Loja produtos p/ donos',
-      src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg',
+      title: 'Loja',
+      src: storePhoto,
       flex: 4 ,
-      button: "2",
-      redirect: "/shop/category2",
-      text: 'colocar aqui sobre a loja'
+      height: "120px", button: "Ir a Loja",
+      redirect: "/shop/category1",
+      text: 'Visite nossa loja, quanto mais você compra, mais você ganha.'
+    },
+    {
+      title: 'Adote',
+      src: adoptPhoto,
+      flex: 4 ,
+      height: "120px",button: "Ver Lista",
+      redirect: "/adopt",
+      text: 'Encontre aqui aquele companheiro que sempre esteve procurando.'
     },
     {
       title: 'Participe',
-      src: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
+      src: participatePhoto,
       flex: 4 ,
-      button: "3",
+      height: "120px",button: "Saiba Mais",
       redirect: "/participate",
-      text: 'colocar aqui sobre os trabalhos sociais'
+      text: 'Venha nos ajudar e mais importante, ajudar os animais que precisam.'
     },
   ],
+  
 }
 
 const mutations = {
