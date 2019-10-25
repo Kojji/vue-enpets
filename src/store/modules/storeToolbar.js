@@ -17,6 +17,7 @@ const state = {
     redirectLogin: "/login",
     redirectParticipe: "/participate",
     redirectHome: "/us",
+    redirectAdopt: "/adopt",
     redirectShop1: "/shop/category1",
     redirectShop2: "/shop/category2",
     redirectCart: "/shop/cart",

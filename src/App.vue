@@ -15,7 +15,7 @@
             </v-card>
           </v-dialog>
         </template>
-        <router-view></router-view>
+        <router-view class="routerView"></router-view>
       </v-container>
     </v-content>
     <Footer />
@@ -40,3 +40,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.routerView {
+  max-width: 1020px;
+}
+</style>

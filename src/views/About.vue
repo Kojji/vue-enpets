@@ -24,9 +24,7 @@
 
             <v-card-text>
               <span>{{card.title}}</span><br>
-              <span class="text--primary">
-                <span>{{card.text}}</span><br>
-              </span>
+              <span v-html="card.text" class="text--primary"></span><br>
             </v-card-text>
 
             <v-card-actions v-if="card.button">
