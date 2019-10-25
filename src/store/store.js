@@ -6,6 +6,7 @@ import toolbar from './modules/storeToolbar'
 import about from './modules/storeAbout'
 import participate from './modules/storeParticipate'
 import shop from './modules/storeShop'
+import userFunctions from './modules/storeUser'
 
 Vue.use(Vuex)
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     toolbar,
     about,
     participate,
-    shop
+    shop,
+    userFunctions
   }
 })

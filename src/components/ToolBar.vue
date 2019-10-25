@@ -13,6 +13,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text :to="redirects.redirectHome">Sobre Nós</v-btn>
+        <v-btn text >Adote</v-btn> <!-- redirecionar para pagina de adoção -->
         <v-btn text :to="redirects.redirectParticipe">Participe</v-btn>
         <v-btn text :to="redirects.redirectShop1">Loja</v-btn>
         <v-btn text :to="redirects.redirectLogin" v-show = "!logged">Entrar</v-btn>

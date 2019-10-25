@@ -22,7 +22,7 @@ const state = {
     redirectCart: "/shop/cart",
     redirectUserPage: "/user"
   },
-  logged: false,
+  
 }
 
 const mutations = {
@@ -41,8 +41,7 @@ const mutations = {
     state.inUserRoute = false
     state.isExtended = false
   },
-  logUser(state) { state.logged = true },
-  logoffUser(state) { state.logged = false },
+  
 }
 
 const actions = {
@@ -51,20 +50,7 @@ const actions = {
     else if(type === 'shop') commit("enableShopTool")
   },
   disableExtended({commit}) { commit("disableExtended") },
-  userLogin({commit}) {
-    // eslint-disable-next-line
-    return new Promise ((res, rej) => {
-      commit("logUser")
-      res()
-    })
-  },
-  userLogoff({commit}) {
-    // eslint-disable-next-line
-    return new Promise ((res, rej) => {
-      commit("logoffUser")
-      res()
-    })
-  },
+  
   
 }
 
@@ -74,7 +60,7 @@ const getters = {
   isExtended(state) { return state.isExtended },
   toolBarIcons(state) { return state.toolBarIcons },
   redirects(state) { return state.redirects },
-  logged(state) { return state.logged },
+  
 }
 
 export default {
