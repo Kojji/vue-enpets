@@ -1,4 +1,7 @@
 import usPhoto from "../../assets/photos/aboutMain2.jpg"
+import adoptPhoto from "../../assets/photos/aboutAdote.jpg"
+import storePhoto from "../../assets/photos/aboutStore.jpg"
+import participatePhoto from "../../assets/photos/aboutParticipe2.jpg"
 
 const state = {
   cardsAboutPage: [
@@ -15,37 +18,30 @@ const state = {
     },
     {
       title: 'Loja',
-      src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
+      src: storePhoto,
       flex: 4 ,
-      height: "140px", button: "1",
+      height: "120px", button: "Ir a Loja",
       redirect: "/shop/category1",
       text: 'Visite nossa loja, quanto mais você compra, mais você ganha.'
     },
     {
       title: 'Adote',
-      src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg',
+      src: adoptPhoto,
       flex: 4 ,
-      height: "140px",button: "2",
-      redirect: "/shop/category2",
-      text: 'Encontre aqui aquele companheiro que sempre esteve rocurando.'
+      height: "120px",button: "Ver Lista",
+      redirect: "/adopt",
+      text: 'Encontre aqui aquele companheiro que sempre esteve procurando.'
     },
     {
       title: 'Participe',
-      src: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
+      src: participatePhoto,
       flex: 4 ,
-      height: "140px",button: "3",
+      height: "120px",button: "Saiba Mais",
       redirect: "/participate",
       text: 'Venha nos ajudar e mais importante, ajudar os animais que precisam.'
     },
-    {
-      title: 'COnheça nossos Parceiros',
-      src: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
-      flex: 12,
-      height: "200px",button: "3",
-      redirect: "/participate",
-      text: 'Venha nos ajudar e mais importante, ajudar os animais que precisam.'
-    }
   ],
+  
 }
 
 const mutations = {
