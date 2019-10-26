@@ -44,13 +44,18 @@
       </v-row>
       <v-dialog
         v-model="dialog"
-        max-width="290"
+        max-width="310"
       >
         <v-card>
           <v-card-title class="headline">{{ description.title }}</v-card-title>
-
+          <!--v-img
+            class="white--text"
+            height="200px"
+            :src="description.src"
+          ></v-img-->
           <v-card-text>
             <span>{{ description.text }}</span>
+            <v-spacer></v-spacer>
             <span>{{ description.price }}</span>
           </v-card-text>
 
@@ -72,6 +77,7 @@
 </template>
 
 <script>
+// import Axios from 'axios'
 import {mapGetters} from 'vuex'
 export default {
   data: () => ({
@@ -82,6 +88,9 @@ export default {
     ...mapGetters([
       "cardsShopPageOne"
     ])
+  },
+  created() {
+    this.$store.dispatch("getShopOne")
   },
   methods: {
     showDescription(product) {

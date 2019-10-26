@@ -49,7 +49,7 @@
               :key="partner.id"
               cols="3"
             >
-              <v-card>
+              <v-card @click="goTo(partner.link)">
                 <v-card-text>
                   <span>{{partner.name}}</span><br>
                 </v-card-text>
@@ -81,7 +81,11 @@ export default {
     ])
   },
   mounted() {
-    this.$store.dispatch("getPartnersInfo")
+  },
+  methods: {
+    goTo(link) {
+      window.open(link, '_blank');
+    }
   }
 };
 </script>

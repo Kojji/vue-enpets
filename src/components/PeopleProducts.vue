@@ -83,6 +83,9 @@ export default {
       "cardsShopPageTwo"
     ])
   },
+  created() {
+    this.$store.dispatch("getShopTwo")
+  },
   methods: {
     showDescription(product) {
       this.dialog = true

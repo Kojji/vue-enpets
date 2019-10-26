@@ -1,9 +1,9 @@
-import Axios from "axios"
 
 import usPhoto from "../../assets/photos/aboutMain2.jpg"
 import adoptPhoto from "../../assets/photos/aboutAdote.jpg"
 import storePhoto from "../../assets/photos/aboutStore.jpg"
 import participatePhoto from "../../assets/photos/aboutParticipe2.jpg"
+import partner1 from "../../assets/partners/pedigree.jpg"
 
 const state = {
   cardsAboutPage: [
@@ -43,28 +43,31 @@ const state = {
       text: 'Venha nos ajudar e mais importante, ajudar os animais que precisam.'
     },
   ],
-  partnersArray: [],
+  partnersArray: [
+    {
+      id: 1,
+      name: "Pedigree",
+      heigth: 100,
+      src: partner1,
+      link: "https://www.pedigree.com.br/"
+    },
+    {
+      id: 2,
+      name: "Partner2",
+      heigth: 100,
+      src: "",
+      link: ""
+    }
+  ],
   
 }
 
 const mutations = {
-  setPartnersArray(state, userData) {
-    state.partnersArray = userData
-  }
+  
 }
 
 const actions = {
-  getPartnersInfo({commit}) {
-    return new Promise((res, rej) => {
-      Axios.get(`http://localhost:3000/partners`)
-        .then((data)=>{
-          commit("setPartnersArray", data.data)
-          res()
-        }).catch(()=>{
-          rej()
-        })
-    })
-  }
+
 }
 
 const getters = {

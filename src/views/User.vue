@@ -21,11 +21,12 @@ export default {
   name: "User",
   methods: {
     deslogar() {
-      alert("Simula o logoff de usuário")
-      this.$store.dispatch('userLogoff')
-        .then(()=>{
-          this.$router.push('/login')
-        })
+      if(confirm("Tem certeza que deseja sair do sistema?")) {
+        this.$store.dispatch('userLogoff')
+          .then(()=>{
+            this.$router.push('/login')
+          })
+      }
     }
   }
 }
