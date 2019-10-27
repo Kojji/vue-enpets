@@ -1,3 +1,65 @@
 <template>
-  <h1>Página de eventos</h1>
+  <v-card class="mx-auto">
+    <v-container
+      class="pa-2"
+      fluid
+    >
+      <v-row>
+        <v-col
+        v-for="event in eventList"
+          :key="event.id"
+          :cols="flex"
+        >
+          <v-card
+            class="pa-2"
+            outlined
+            tile
+            @click.stop="showDescription(event)"
+          >
+            <v-img
+            class="white--text"
+            height="200px"
+            :src="event.src"
+            ></v-img>
+            <v-card-text>
+              <span>{{ event.title }}</span>
+              <v-spacer></v-spacer>
+              <span>{{ event.shortDescription }}</span>
+              <v-spacer></v-spacer>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-dialog
+        v-model="dialog"
+        max-width="310"
+      >
+        <v-card>
+          <v-card-title class="headline">{{ description.title }}</v-card-title>
+        </v-card>
+      </v-dialog>
+    </v-container>
+  </v-card>
 </template>
+
+<script>
+import {mapGetters} from "vuex"
+export default {
+  data: () => ({
+    flex: 12,
+    dialog: false,
+    description: {}
+  }),
+  computed: {
+    ...mapGetters([
+      "eventList"
+    ])
+  },
+  methods: {
+    showDescription(card) {
+      this.dialog = true
+      this.description = card
+    }
+  }
+}
+</script>
