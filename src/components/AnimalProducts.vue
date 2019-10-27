@@ -72,6 +72,19 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+      <v-snackbar
+        v-model="snackbar"
+        :timeout="1500"
+      >
+        Item Adicionado ao Carrinho
+        <v-btn
+          color="blue"
+          text
+          @click="snackbar = false"
+        >
+          Fechar
+        </v-btn>
+      </v-snackbar>
     </v-container>
   </v-card>
 </template>
@@ -82,7 +95,8 @@ import {mapGetters} from 'vuex'
 export default {
   data: () => ({
     dialog: false,
-    description: {}
+    description: {},
+    snackbar: false
   }),
   computed: {
     ...mapGetters([
@@ -99,8 +113,8 @@ export default {
     },
     addToCart(product) {
       this.dialog = false
-      // eslint-disable-next-line
-      console.log(product)
+      this.$store.dispatch("shopAddToCart", product)
+      this.snackbar = true
     }
   }
 };

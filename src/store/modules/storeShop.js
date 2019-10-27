@@ -3,11 +3,22 @@ import Axios from "axios"
 const state = {
   cardsShopPageOne: [],
   cardsShopPageTwo: [],
+  sessionCart: [],
 }
 
 const mutations = {
   cardsShopPageOne(state, userData) { state.cardsShopPageOne = userData },
-  cardsShopPageTwo(state, userData) { state.cardsShopPageTwo = userData }
+  cardsShopPageTwo(state, userData) { state.cardsShopPageTwo = userData },
+  addToSessionCart(state, userData) {
+    let added = false
+    state.sessionCart.forEach(element => {
+      if(element.prodId === userData.prodId) {
+        element.quantity += userData.quantity
+        added = true
+      }
+    });
+    if(!added) state.sessionCart.push(userData)
+  }
 }
 
 const actions = {
@@ -32,12 +43,16 @@ const actions = {
         rej(err)
       })
     })
+  },
+  shopAddToCart({commit}, userData) {
+    commit("addToSessionCart", {prodId: userData.id, quantity: 1})
   }
 }
 
 const getters = {
   cardsShopPageOne(state) { return state.cardsShopPageOne },
   cardsShopPageTwo(state) { return state.cardsShopPageTwo },
+  sessionCart(state) { return state.sessionCart }
 }
 
 export default {
