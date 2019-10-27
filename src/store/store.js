@@ -7,6 +7,7 @@ import about from './modules/storeAbout'
 import participate from './modules/storeParticipate'
 import shop from './modules/storeShop'
 import userFunctions from './modules/storeUser'
+import adoptFunctions from './modules/storeAdopt'
 
 Vue.use(Vuex)
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     about,
     participate,
     shop,
-    userFunctions
+    userFunctions,
+    adoptFunctions
   }
 })
