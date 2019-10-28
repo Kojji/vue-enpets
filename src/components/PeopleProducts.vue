@@ -4,44 +4,55 @@
       class="pa-2"
       fluid
     >
-      <v-row>
-        <v-col
-          v-for="card in cardsShopPageTwo"
-          :key="card.id"
-          :cols="card.flex"
-        >
-          <v-card
-            class="pa-2"
-            outlined
-            tile
-            @click.stop="showDescription(card)"
-          >
-            <v-img
-              class="white--text"
-              height="200px"
-              :src="card.src"
-            ></v-img>
-
-
-            <v-card-text>
-              <span class="text--primary">
-                <span>{{card.title}}</span><br>
-                <span>{{card.price}}</span><br>
-              </span>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                text
-                color="orange"
-                @click.stop="addToCart(card)"
+      <v-data-iterator
+        :items="cardsShopPageTwo"
+        :items-per-page.sync="itemsPerPage"
+        :footer-props="footerProps"
+      >
+        <template v-slot:default="props">
+          <v-row>
+            <v-col
+              v-for="card in props.items"
+              :key="card.id"
+              :cols="card.flex"
+              sm="6"
+              md="4"
+              lg="3"
+            >
+              <v-card
+                class="pa-2"
+                outlined
+                tile
+                @click.stop="showDescription(card)"
               >
-                comprar
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+                <v-img
+                  class="white--text"
+                  height="200px"
+                  :src="card.src"
+                ></v-img>
+
+
+                <v-card-text>
+                  <span class="text--primary">
+                    <span>{{card.title}}</span><br>
+                    <span>{{card.price}}</span><br>
+                  </span>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-btn
+                    text
+                    color="orange"
+                    @click.stop="addToCart(card)"
+                  >
+                    comprar
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+          </v-row>
+        </template>
+      </v-data-iterator>
       <v-dialog
         v-model="dialog"
         max-width="290"
@@ -90,7 +101,12 @@ export default {
   data: () => ({
     dialog: false,
     description: {},
-    snackbar: false
+    snackbar: false,
+    itemsPerPage: 6,
+    footerProps: {
+      itemsPerPageOptions: [6,12,24,-1],
+      itemsPerPageText: 'Itens por página'
+    },
   }),
   computed: {
     ...mapGetters([

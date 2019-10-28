@@ -4,42 +4,41 @@
       class="pa-2"
       fluid
     >
-      <v-row>
-        <v-lazy
-          v-model="isActive"
-          :options="{
-            threshold: .5
-          }"
-          min-height="200"
-          transition="fade-transition"
-        >
-          <v-col
-          class="cards"
-          v-for="event in eventList"
-            :key="event.id"
-            :cols="flex"
-          >
-            <v-card
-              class="pa-2"
-              outlined
-              tile
-              @click.stop="showDescription(event)"
+      <v-data-iterator
+        :items="eventList"
+        :items-per-page.sync="itemsPerPage"
+        :footer-props="footerProps"
+      >
+        <template v-slot:default="props">
+          <v-row>
+            <v-col
+              v-for="item in props.items"
+              :key="item.id"
+              cols="12"
+              
             >
-              <v-img
-              class="white--text"
-              height="100px"
-              :src="event.src"
-              ></v-img>
-              <v-card-text>
-                <span>{{ event.title }}</span>
-                <v-spacer></v-spacer>
-                <span>{{ event.date }} - {{ event.shortDescription }}</span>
-                <v-spacer></v-spacer>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-lazy>
-      </v-row>
+              <v-card
+                outlined
+                tile
+                @click.stop="showDescription(item)"
+              >
+                <v-img
+                  class="white--text"
+                  height="100px"
+                  :src="item.src"
+                ></v-img>
+                <v-card-text>
+                  <span>{{ item.title }}</span>
+                  <v-spacer></v-spacer>
+                  <span>{{ item.date }} - {{ item.shortDescription }}</span>
+                  <v-spacer></v-spacer>
+                </v-card-text>
+                <v-divider></v-divider>
+              </v-card>
+            </v-col>
+          </v-row>
+        </template>
+      </v-data-iterator>
       <v-dialog
         v-model="dialog"
         max-width="310"
@@ -59,7 +58,11 @@ export default {
     flex: 12,
     dialog: false,
     description: {},
-    isActive: false
+    itemsPerPage: 4,
+    footerProps: {
+      itemsPerPageOptions: [4,8,12,-1],
+      itemsPerPageText: 'Itens por página'
+    },
   }),
   computed: {
     ...mapGetters([
