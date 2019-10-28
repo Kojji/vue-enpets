@@ -27,12 +27,48 @@
           <v-btn text :to="redirects.redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
         </v-toolbar-items>
         <v-toolbar-items v-if="inUserRoute">
-          <v-btn text><v-icon>{{ toolBarIcons.forumIcon }}</v-icon></v-btn>
-          <v-btn text><v-icon>{{ toolBarIcons.albumIcon }}</v-icon></v-btn>
-          <v-btn text><v-icon>{{ toolBarIcons.exchangeIcon }}</v-icon></v-btn> <!-- trocar pontos de compras -->
-          <v-btn text :to="redirects.redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
-          <v-btn text><v-icon>{{ toolBarIcons.helpIcon }}</v-icon></v-btn>
-          <v-btn text @click="deslogar"><v-icon>{{ toolBarIcons.exitIcon }}</v-icon></v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on"><v-icon>{{ toolBarIcons.forumIcon }}</v-icon></v-btn>
+            </template>
+            <span>Chats</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on"><v-icon>{{ toolBarIcons.albumIcon }}</v-icon></v-btn>
+            </template>
+            <span>Inventário</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on"><v-icon>{{ toolBarIcons.exchangeIcon }}</v-icon></v-btn> <!-- trocar pontos de compras -->
+            </template>
+            <span>Pontos</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on" :to="redirects.redirectCart"><v-icon>{{ toolBarIcons.cartIcon }}</v-icon></v-btn>
+            </template>
+            <span>Carrinho</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on" ><v-icon>{{ toolBarIcons.donationIcon }}</v-icon></v-btn>
+            </template>
+            <span>Doações</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on"><v-icon>{{ toolBarIcons.helpIcon }}</v-icon></v-btn>
+            </template>
+            <span>Ajuda</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on" @click="deslogar"><v-icon>{{ toolBarIcons.exitIcon }}</v-icon></v-btn>
+            </template>
+            <span>Sair</span>
+          </v-tooltip>
         </v-toolbar-items>
         <v-toolbar-items v-if="inAdoptRoute">
           <v-btn text :to="redirects.redirectAdoptOng">Ong's</v-btn>

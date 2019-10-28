@@ -26,9 +26,6 @@
               <v-spacer></v-spacer>
               <span>{{ animal.sex }}</span>
               <v-spacer></v-spacer>
-              <span>{{ animal.age }}</span>
-              <v-spacer></v-spacer>
-              <span>{{ animal.description }}</span>
             </v-card-text>
           </v-card>
         </v-col>
@@ -38,7 +35,23 @@
         max-width="310"
       >
         <v-card>
-          <v-card-title class="headline">{{ description.nome }}</v-card-title>
+          <v-card-title class="headline">{{ description.name }}</v-card-title>
+          <v-card-text>
+            <span>{{ description.age }}</span>
+            <v-spacer></v-spacer>
+            <span>{{ description.description }}</span>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn
+              text
+              color="pink"
+              @click.stop="enterChat(description)"
+            >
+              Chat
+            </v-btn>
+          </v-card-actions>
         </v-card>
       </v-dialog>
     </v-container>
@@ -62,6 +75,9 @@ export default {
     showDescription(card) {
       this.dialog = true
       this.description = card
+    },
+    enterChat(animal) {
+
     }
   }
 }

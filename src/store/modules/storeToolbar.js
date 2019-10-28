@@ -11,6 +11,7 @@ const state = {
     albumIcon: "mdi-book-open-variant",
     exchangeIcon: "mdi-coin-outline",
     helpIcon: "mdi-help-circle",
+    donationIcon: "mdi-cash",
     exitIcon: "mdi-exit-to-app",
 
   },

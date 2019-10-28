@@ -10,6 +10,15 @@ const state = {
       location: "Rio de Janeiro",
       photo: gato1,
       description: "texto ",
+      userId: null,
+      situation: "not",
+      messages: [
+        {
+          userId: null,
+          message: "",
+          time: null
+        }
+      ]
     }
   ],
   adoptPeopleList: [
@@ -21,6 +30,15 @@ const state = {
       location: "Rio de Janeiro",
       photo: gato1,
       description: "texto texto",
+      userId: null,
+      situation: "not",
+      messages: [
+        {
+          userId: null,
+          message: "",
+          time: null
+        }
+      ]
     }
   ],
 }
