@@ -41,10 +41,18 @@
       </v-data-iterator>
       <v-dialog
         v-model="dialog"
-        max-width="310"
+        max-width="720"
       >
         <v-card>
+          <v-img
+            class="white--text"
+            height="150px"
+            :src="description.src"
+          ></v-img>
           <v-card-title class="headline">{{ description.title }}</v-card-title>
+          <v-card-text>
+            <span v-html="description.fullDescription" class="text--primary"></span><br>
+          </v-card-text>
         </v-card>
       </v-dialog>
     </v-container>

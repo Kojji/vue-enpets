@@ -14,7 +14,7 @@
             <v-col
               v-for="card in props.items"
               :key="card.id"
-              :cols="card.flex"
+              cols="12"
               sm="6"
               md="4"
               lg="3"
@@ -59,9 +59,15 @@
       >
         <v-card>
           <v-card-title class="headline">{{ description.title }}</v-card-title>
-
+          <v-img
+            class="white--text"
+            :src="description.src"
+          ></v-img>
+          
           <v-card-text>
+          <v-spacer></v-spacer>
             <span>{{ description.text }}</span>
+            <v-spacer></v-spacer>
             <span>{{ description.price }}</span>
           </v-card-text>
 
@@ -102,7 +108,7 @@ export default {
     dialog: false,
     description: {},
     snackbar: false,
-    itemsPerPage: 6,
+    itemsPerPage: 12,
     footerProps: {
       itemsPerPageOptions: [6,12,24,-1],
       itemsPerPageText: 'Itens por página'

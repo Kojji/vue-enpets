@@ -54,7 +54,9 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-
+            <v-btn icon>
+              <v-icon>mdi-share-variant</v-icon>
+            </v-btn>
             <v-btn
               text
               color="pink"
@@ -63,6 +65,48 @@
               Chat
             </v-btn>
           </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <v-dialog
+        v-model="chatWindow"
+        max-width="720"
+        persistent
+      >
+        <v-card>
+          <v-app-bar
+            dark
+            color="pink"
+          >
+            <v-toolbar-title>{{ identifyUser }}</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon @click="chatWindow = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-app-bar>
+          <div class="d-flex flex-column">
+            <div>
+              <!-- data iterator para mostrar as mensagens -->
+            </div>
+            <div class="d-flex flex-row ma-4">
+              <v-textarea
+                v-model="chatMessage"
+                label="Mensagem"
+                auto-grow
+                rows="1"
+                row-height="12"
+              ></v-textarea>
+              <v-btn icon class=" align-self-center">
+                <v-icon>mdi-map</v-icon>
+              </v-btn>
+              <v-btn icon class=" align-self-center">
+                <v-icon>mdi-emoticon</v-icon>
+              </v-btn>
+              <v-btn icon @click="sendMessage" class=" align-self-center">
+                <v-icon>mdi-send</v-icon>
+              </v-btn>
+
+            </div>
+          </div>
         </v-card>
       </v-dialog>
     </v-container>
@@ -77,6 +121,8 @@ export default {
     dialog: false,
     description: {},
     itemsPerPage: 6,
+    chatWindow: false,
+    chatMessage: "",
     footerProps: {
       itemsPerPageOptions: [6,12,24,-1],
       itemsPerPageText: 'Itens por página'
@@ -84,8 +130,13 @@ export default {
   }),
   computed: {
     ...mapGetters([
-      "adoptPeopleList"
-    ])
+      "adoptPeopleList",
+      "userData"
+    ]),
+    identifyUser() {
+      if(this.userData) { return this.userData[0].userName }
+      else { return "Usuário" } 
+    }
   },
   methods: {
     showDescription(card) {
@@ -93,8 +144,14 @@ export default {
       this.description = card
     },
     enterChat(animal) {
+      this.chatWindow = true
        // eslint-disable-next-line
       console.log(animal)
+    },
+    sendMessage() {
+      // eslint-disable-next-line
+      console.log(this.chatMessage)
+      this.chatMessage = ""
     }
   }
 }

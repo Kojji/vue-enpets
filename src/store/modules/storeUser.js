@@ -60,6 +60,7 @@ const actions = {
 }
 const getters = {
   logged(state) { return state.logged },
+  userData(state) { return state.userData }
 }
 export default {
   state,

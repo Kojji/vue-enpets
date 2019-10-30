@@ -3,7 +3,9 @@ import usPhoto from "../../assets/photos/aboutMain2.jpg"
 import adoptPhoto from "../../assets/photos/aboutAdote.jpg"
 import storePhoto from "../../assets/photos/aboutStore.jpg"
 import participatePhoto from "../../assets/photos/aboutParticipe2.jpg"
-import partner1 from "../../assets/partners/pedigree.jpg"
+import pedigree from "../../assets/partners/pedigree.jpg"
+import forPetLovers from "../../assets/partners/forpetlovers.png"
+import petLove from "../../assets/partners/petlove.png"
 
 const state = {
   cardsAboutPage: [
@@ -48,15 +50,22 @@ const state = {
       id: 1,
       name: "Pedigree",
       heigth: 100,
-      src: partner1,
+      src: pedigree,
       link: "https://www.pedigree.com.br/"
     },
     {
       id: 2,
-      name: "Partner2",
+      name: "For Pet Lovers",
+      heigth: 300,
+      src: forPetLovers,
+      link: "https://www.forpetlovers.com.br/"
+    },
+    {
+      id: 3,
+      name: "Pet Love",
       heigth: 100,
-      src: "",
-      link: ""
+      src: petLove,
+      link: "https://www.petlove.com.br/"
     }
   ],
   
