@@ -1,12 +1,12 @@
 const state = {
   cardsParticipatePage: [
     {
-      title: 'Adote um animal',
+      title: 'Seja um voluntario',
       src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
-      flex: 12 ,
+      flex: 12,
       button: null,
       redirect: null,
-      text: 'colocar aqui sobre adoção de animais'
+      text: 'colocar aqui sobre como ser um voluntario'
     },
     { 
       title: 'Doações por compras',
@@ -25,7 +25,7 @@ const state = {
       text: 'colocar aqui as informações de por onde realizar a doação'
     },
     {
-      title: 'PAtrocinio',
+      title: 'Patrocinio',
       src: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
       flex: 4,
       button: null,
@@ -41,12 +41,12 @@ const state = {
       text: 'colocar aqui sobre apadrinhamento de animais'
     },
     {
-      title: 'Ajude um dono',
+      title: 'Eventos',
       src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
       flex: 6,
       button: null,
       redirect: null,
-      text: 'colocar aqui sobre encontrar animais perdidos'
+      text: 'colocar aqui sobre ajuda em eventos'
     },
   ],
 }

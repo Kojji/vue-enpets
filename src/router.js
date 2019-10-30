@@ -38,10 +38,11 @@ export default new Router({
     {
       path: '/shop',
       name: 'loja',
+      redirect: '/shop/category1',
       children: [
         {
           path: 'category1',
-          component: () => import(/* webpackChunkName: "animalProd" */ './components/AnimalProducts.vue')
+          component: () => import(/* webpackChunkName: "animalProd" */ './components/AnimalProducts.vue') // pesquisar de passar parametros na rota melhorar a eficiencia
         },
         {
           path: 'category2',
@@ -70,8 +71,23 @@ export default new Router({
     {
       path: '/adopt',
       name: 'adote',
+      redirect: '/adopt/from-ongs',
+      children: [
+        {
+          path: 'from-ongs',
+          component: () => import(/* webpackChunkName: "adoptO" */ './components/AdoptFromOng.vue')
+        },
+        {
+          path: 'from-people',
+          component: () => import(/* webpackChunkName: "adoptP" */ './components/AdoptFromPeople.vue')
+        },
+        {
+          path: 'help',
+          component: () => import(/* webpackChunkName: "adoptHelp" */ './components/AdoptHelp.vue')
+        },
+      ],
       beforeEnter(to,from,next) {
-        store.dispatch('disableExtended')
+        store.dispatch('enableExtended','adopt')
         next()
       },
       component: () => import(/* webpackChunkName: "adote" */ './views/Adopt.vue')
@@ -87,10 +103,6 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/shop/category1'
-    },
-    {
-      path: '/shop',
       redirect: '/shop/category1'
     }
   ]

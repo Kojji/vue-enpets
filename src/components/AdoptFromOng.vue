@@ -5,35 +5,37 @@
       fluid
     >
       <v-data-iterator
-        :items="eventList"
+        :items="adoptOngList"
         :items-per-page.sync="itemsPerPage"
         :footer-props="footerProps"
       >
         <template v-slot:default="props">
           <v-row>
             <v-col
-              v-for="item in props.items"
-              :key="item.id"
-              cols="12"
-              
+              v-for="animal in props.items"
+              :key="animal.id"
+              :cols="flex"
+              sm="6"
+              md="4"
+              lg="3"
             >
               <v-card
+                class="pa-2"
                 outlined
                 tile
-                @click.stop="showDescription(item)"
+                @click.stop="showDescription(animal)"
               >
                 <v-img
-                  class="white--text"
-                  height="100px"
-                  :src="item.src"
+                class="white--text"
+                height="200px"
+                :src="animal.photo"
                 ></v-img>
                 <v-card-text>
-                  <span>{{ item.title }}</span>
+                  <span>{{ animal.name }}</span>
                   <v-spacer></v-spacer>
-                  <span>{{ item.date }} - {{ item.shortDescription }}</span>
+                  <span>{{ animal.sex }}</span>
                   <v-spacer></v-spacer>
                 </v-card-text>
-                <v-divider></v-divider>
               </v-card>
             </v-col>
           </v-row>
@@ -41,18 +43,10 @@
       </v-data-iterator>
       <v-dialog
         v-model="dialog"
-        max-width="720"
+        max-width="310"
       >
         <v-card>
-          <v-img
-            class="white--text"
-            height="150px"
-            :src="description.src"
-          ></v-img>
-          <v-card-title class="headline">{{ description.title }}</v-card-title>
-          <v-card-text>
-            <span v-html="description.fullDescription" class="text--primary"></span><br>
-          </v-card-text>
+          <v-card-title class="headline">{{ description.name }}</v-card-title>
         </v-card>
       </v-dialog>
     </v-container>
@@ -63,18 +57,18 @@
 import {mapGetters} from "vuex"
 export default {
   data: () => ({
-    flex: 12,
+    flex: 3,
     dialog: false,
     description: {},
-    itemsPerPage: 4,
+    itemsPerPage: 6,
     footerProps: {
-      itemsPerPageOptions: [4,8,12,-1],
+      itemsPerPageOptions: [6,12,24,-1],
       itemsPerPageText: 'Itens por página'
     },
   }),
   computed: {
     ...mapGetters([
-      "eventList"
+      "adoptOngList"
     ])
   },
   methods: {
@@ -85,8 +79,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.cards {
- max-width: 1020px;
-}
-</style>

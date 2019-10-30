@@ -1,7 +1,11 @@
+
 import usPhoto from "../../assets/photos/aboutMain2.jpg"
 import adoptPhoto from "../../assets/photos/aboutAdote.jpg"
 import storePhoto from "../../assets/photos/aboutStore.jpg"
 import participatePhoto from "../../assets/photos/aboutParticipe2.jpg"
+import pedigree from "../../assets/partners/pedigree.jpg"
+import forPetLovers from "../../assets/partners/forpetlovers.png"
+import petLove from "../../assets/partners/petlove.png"
 
 const state = {
   cardsAboutPage: [
@@ -41,6 +45,29 @@ const state = {
       text: 'Venha nos ajudar e mais importante, ajudar os animais que precisam.'
     },
   ],
+  partnersArray: [
+    {
+      id: 1,
+      name: "Pedigree",
+      heigth: 100,
+      src: pedigree,
+      link: "https://www.pedigree.com.br/"
+    },
+    {
+      id: 2,
+      name: "For Pet Lovers",
+      heigth: 300,
+      src: forPetLovers,
+      link: "https://www.forpetlovers.com.br/"
+    },
+    {
+      id: 3,
+      name: "Pet Love",
+      heigth: 100,
+      src: petLove,
+      link: "https://www.petlove.com.br/"
+    }
+  ],
   
 }
 
@@ -49,11 +76,12 @@ const mutations = {
 }
 
 const actions = {
-  
+
 }
 
 const getters = {
   cardsAboutPage(state) { return state.cardsAboutPage },
+  partnersArray(state) { return state.partnersArray }
 }
 
 export default {
