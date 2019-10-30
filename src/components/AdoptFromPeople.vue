@@ -84,8 +84,18 @@
             </v-btn>
           </v-app-bar>
           <div class="d-flex flex-column">
-            <div>
-              <!-- data iterator para mostrar as mensagens -->
+            <div class="d-flex flex-row ma-4">
+              <div class="d-flex flex-column">
+                <v-card
+                  v-for="message in activeChatMessage"
+                  :key="message.id"
+                  class="pa-2"
+                  outlined
+                  tile
+                >
+                  message {{ message.message }}
+                </v-card>
+              </div>
             </div>
             <div class="d-flex flex-row ma-4">
               <v-textarea
@@ -119,6 +129,7 @@ export default {
   data: () => ({
     flex: 3,
     dialog: false,
+    activeChat: null,
     description: {},
     itemsPerPage: 6,
     chatWindow: false,
@@ -131,7 +142,8 @@ export default {
   computed: {
     ...mapGetters([
       "adoptPeopleList",
-      "userData"
+      "userData",
+      "activeChatMessage"
     ]),
     identifyUser() {
       if(this.userData) { return this.userData[0].userName }
@@ -145,13 +157,15 @@ export default {
     },
     enterChat(animal) {
       this.chatWindow = true
-       // eslint-disable-next-line
-      console.log(animal)
+      this.activeChat = animal.id
+      this.$store.dispatch("accessMessages", animal)
     },
     sendMessage() {
-      // eslint-disable-next-line
-      console.log(this.chatMessage)
-      this.chatMessage = ""
+      this.$store.dispatch("sendChatMessage", {chatId: this.activeChat, message: this.chatMessage})
+      .then(()=>{
+        this.$store.dispatch("accessMessages", {id: this.activeChat})
+        this.chatMessage = ""
+      })
     }
   }
 }

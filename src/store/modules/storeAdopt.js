@@ -12,13 +12,7 @@ const state = {
       description: "texto ",
       userId: null,
       situation: "not",
-      messages: [
-        {
-          userId: null,
-          message: "",
-          time: null
-        }
-      ]
+      messages: []
     }
   ],
   adoptPeopleList: [
@@ -35,22 +29,46 @@ const state = {
       messages: [
         {
           userId: null,
-          message: "",
+          userName: "",
+          message: "asdasfasf",
           time: null
         }
       ]
     }
   ],
+  activeChatMessage: [],
 }
 const mutations = {
-
+  activeChatMessage(state, userData) { state.activeChatMessage = userData },
+  addChatMessage(state, userData) {
+    state.adoptPeopleList.forEach(element => {
+      if(element.id === userData.chatId) {
+        element.messages.push({message: userData.message})
+      }
+    });
+  }
 }
 const actions = {
-
+  accessMessages({commit,state}, userData) {
+    state.adoptPeopleList.forEach(element => {
+      if(element.id === userData.id) {
+        commit("activeChatMessage", element.messages)
+      }
+    });
+  },
+  sendChatMessage({commit}, userData) {
+    // eslint-disable-next-line
+    return new Promise ((res, rej)=>{
+      commit("addChatMessage", userData)
+      res()
+    })
+    
+  }
 }
 const getters = {
   adoptOngList(state) { return state.adoptOngList },
-  adoptPeopleList(state) { return state.adoptPeopleList}
+  adoptPeopleList(state) { return state.adoptPeopleList },
+  activeChatMessage(state) { return state.activeChatMessage }
 }
 export default {
   state,
