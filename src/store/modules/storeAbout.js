@@ -6,6 +6,8 @@ import participatePhoto from "../../assets/photos/aboutParticipe2.jpg"
 import pedigree from "../../assets/partners/pedigree.jpg"
 import forPetLovers from "../../assets/partners/forpetlovers.png"
 import petLove from "../../assets/partners/petlove.png"
+import aatan from "../../assets/partners/ongAatan.png"
+import amigoNCompra from "../../assets/partners/amigoNCompra.png"
 
 const state = {
   cardsAboutPage: [
@@ -66,6 +68,20 @@ const state = {
       heigth: 100,
       src: petLove,
       link: "https://www.petlove.com.br/"
+    },
+    {
+      id: 4,
+      name: "Amigo não se compra",
+      heigth: 100,
+      src: amigoNCompra,
+      link: "https://www.amigonaosecompra.com.br/"
+    },
+    {
+      id: 5,
+      name: "Ong Aatan",
+      heigth: 100,
+      src: aatan,
+      link: "https://www.aatansorocaba.com.br/"
     }
   ],
   

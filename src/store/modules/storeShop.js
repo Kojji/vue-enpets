@@ -45,7 +45,7 @@ const actions = {
     })
   },
   shopAddToCart({commit}, userData) {
-    commit("addToSessionCart", {prodId: userData.id, quantity: 1})
+    commit("addToSessionCart", {prodId: userData.id, quantity: userData.quantidade})
   }
 }
 

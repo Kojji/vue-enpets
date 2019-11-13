@@ -84,23 +84,30 @@
             </v-btn>
           </v-app-bar>
           <div class="d-flex flex-column">
-            <div class="d-flex flex-row ma-4">
-              <div class="d-flex flex-column">
-                <v-card
-                  v-for="message in activeChatMessage"
-                  :key="message.id"
-                  class="pa-2"
-                  outlined
-                  tile
-                >
-                  message {{ message.message }}
-                </v-card>
-              </div>
-            </div>
+            <v-card-text>
+              <v-card
+                v-for="message in activeChatMessage"
+                :key="message.id"
+                @click="showUser(message.userName)"
+                class="pr-1"
+                :color="messageColor(message.userId)"
+                shaped
+              >
+                <div class="d-flex flex-row ma-4">
+                  <div class="d-flex flex-column">
+                    <v-card-text>
+                      <span style="font-size: 14px">{{ message.userName }}   </span><span style="font-size: 12px; overflow: auto">{{ message.time }}</span>
+                      <div class="subtitle-1">{{ message.message }}</div>
+                    </v-card-text>
+                  </div>
+                </div>
+              </v-card>  
+            </v-card-text>
             <div class="d-flex flex-row ma-4">
               <v-textarea
+                :disabled="!logged"
                 v-model="chatMessage"
-                label="Mensagem"
+                :label="message"
                 auto-grow
                 rows="1"
                 row-height="12"
@@ -119,6 +126,17 @@
           </div>
         </v-card>
       </v-dialog>
+      <v-dialog
+        v-model="userInfo"
+      >
+      <v-card>
+        <v-card-title>{{userInformation}}</v-card-title>
+        <v-card-text>foto, cidade, email</v-card-text>
+        <v-card-actions>
+          <v-btn>Enviar Mensagem</v-btn>
+        </v-card-actions>
+      </v-card>
+      </v-dialog>
     </v-container>
   </v-card>
 </template>
@@ -130,8 +148,10 @@ export default {
     flex: 3,
     dialog: false,
     activeChat: null,
+    userInformation: null,
+    userInfo: false,
     description: {},
-    itemsPerPage: 6,
+    itemsPerPage: 12,
     chatWindow: false,
     chatMessage: "",
     footerProps: {
@@ -143,14 +163,26 @@ export default {
     ...mapGetters([
       "adoptPeopleList",
       "userData",
-      "activeChatMessage"
+      "activeChatMessage",
+      "logged"
     ]),
+    message() {
+      if(this.logged) { return "Mensagem "}
+      else { return "É preciso fazer login para enviar mensagens!"}
+    },
     identifyUser() {
       if(this.userData) { return this.userData[0].userName }
       else { return "Usuário" } 
     }
   },
   methods: {
+    messageColor(userId) {
+      if(this.logged) {
+        if(this.userData[0].id == userId) { return "green lighten-4" }
+        else { return "indigo lighten-5"}
+      }
+        else { return "indigo lighten-5"}
+    },
     showDescription(card) {
       this.dialog = true
       this.description = card
@@ -161,12 +193,23 @@ export default {
       this.$store.dispatch("accessMessages", animal)
     },
     sendMessage() {
-      this.$store.dispatch("sendChatMessage", {chatId: this.activeChat, message: this.chatMessage})
+      let time = new Date()
+      this.$store.dispatch("sendChatMessage", {chatId: this.activeChat, message: this.chatMessage, userData:this.userData, time: time})
       .then(()=>{
         this.$store.dispatch("accessMessages", {id: this.activeChat})
         this.chatMessage = ""
       })
+    },
+    showUser(userName) {
+      this.userInformation = userName
+      this.userInfo = true
     }
   }
 }
 </script>
+
+<style scoped>
+.dateConfig{
+  font-size: 14px;
+}
+</style>

@@ -60,7 +60,7 @@ export default {
     flex: 3,
     dialog: false,
     description: {},
-    itemsPerPage: 6,
+    itemsPerPage: 12,
     footerProps: {
       itemsPerPageOptions: [6,12,24,-1],
       itemsPerPageText: 'Itens por página'

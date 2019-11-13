@@ -37,6 +37,7 @@
                     <span>{{card.title}}</span><br>
                     <span>{{card.price}}</span><br>
                   </span>
+                  
                 </v-card-text>
 
                 <v-card-actions>
@@ -47,7 +48,9 @@
                   >
                     comprar
                   </v-btn>
+                
                 </v-card-actions>
+                
               </v-card>
             </v-col>
           </v-row>
@@ -72,8 +75,24 @@
           </v-card-text>
 
           <v-card-actions>
+            <v-text-field
+              v-model="shopQuantity"
+              class="mx-4"
+              label="Quantidade"
+              :max="description.available"
+              min="1"
+              step="1"
+              style="width: 125px"
+              type="number"
+            ></v-text-field>
+            <v-spacer />
+            <v-text-field
+            label="disponível"
+            disabled
+            :value="description.available"
+            >
+            </v-text-field>
             <v-spacer></v-spacer>
-
             <v-btn
               text
               color="orange"
@@ -114,6 +133,7 @@ export default {
       itemsPerPageOptions: [6,12,24,-1],
       itemsPerPageText: 'Itens por página'
     },
+    shopQuantity: 1
   }),
   computed: {
     ...mapGetters([
@@ -130,7 +150,9 @@ export default {
     },
     addToCart(product) {
       this.dialog = false
+      Object.assign(product,{quantidade: parseInt(this.shopQuantity, 10)})
       this.$store.dispatch("shopAddToCart", product)
+      this.shopQuantity = 1
       this.snackbar = true
     }
   }
