@@ -5,7 +5,7 @@
       <v-dialog v-model="dialog" max-width="350">
         <v-card>
           <v-card-title class="headline">Adoção</v-card-title>
-          <v-card-text>Por regras estabelecidas pelas Ong's ao realizar a doação de animais, a adoção de animais das Ong's apresentam algumas peculiaridades que podem ser conferidas na página de ajuda sobre as adoções.</v-card-text>
+          <v-card-text>Devido ao funcionamento das Ong's, para a adoção de animais, alguns documentos e requisitos precisam ser analisados, veja a página de Ajuda para conferir as mesmas</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="pink darken-1" dark text :to="redirects.redirectAdoptHelp" @click="dialog = false">Ajuda</v-btn>

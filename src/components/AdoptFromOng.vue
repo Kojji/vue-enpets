@@ -31,11 +31,12 @@
                 :src="animal.photo"
                 ></v-img>
                 <v-card-text>
-                  <span>{{ animal.name }}</span>
+                  <span>{{ animal.name }} - {{ animal.sex }}</span>
                   <v-spacer></v-spacer>
-                  <span>{{ animal.sex }}</span>
+                  <span>{{animal.location}}</span>
                   <v-spacer></v-spacer>
                 </v-card-text>
+                
               </v-card>
             </v-col>
           </v-row>
@@ -46,7 +47,31 @@
         max-width="310"
       >
         <v-card>
+          <v-img
+            class="white--text"
+            height="200px"
+            :src="description.photo"
+          ></v-img>
           <v-card-title class="headline">{{ description.name }}</v-card-title>
+          <v-card-text>
+            <span>{{ description.age }}</span>
+            <v-spacer></v-spacer>
+            <span>{{ description.location }}</span>
+            <v-spacer></v-spacer>
+            <span>{{ description.description }}</span>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+              <v-btn icon>
+                <v-icon>mdi-share-variant</v-icon>
+              </v-btn>
+              <v-btn
+                text
+                color="pink"
+              >
+                Formulario
+              </v-btn>
+            </v-card-actions>
         </v-card>
       </v-dialog>
     </v-container>

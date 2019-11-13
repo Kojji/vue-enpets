@@ -35,6 +35,12 @@
           </v-tooltip>
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
+              <v-btn text v-on="on"><v-icon>{{ toolBarIcons.catIcon }}</v-icon></v-btn>
+            </template>
+            <span>Postar</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
               <v-btn text v-on="on"><v-icon>{{ toolBarIcons.albumIcon }}</v-icon></v-btn>
             </template>
             <span>Inventário</span>

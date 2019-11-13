@@ -6,6 +6,7 @@ const state = {
   toolBarIcons: {
     cartIcon: "mdi-cart",
     dogIcon: "mdi-dog",
+    catIcon: "mdi-cat",
     ownerIcon: "mdi-dog-service",
     forumIcon: "mdi-chat",
     albumIcon: "mdi-book-open-variant",
